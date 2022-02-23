@@ -1,0 +1,16 @@
+.item {
+  display: flex;
+  border: 1px solid white;
+  border-radius: 4px;
+  justify-content: space-between;
+  width: 80%;
+  margin: 5px;
+  padding: 3px 5px;
+  box-shadow: 4px 4px 5px white;
+}
+.btn {
+  background-color: #fff;
+  color: rgb(57, 73, 78);
+  display: block;
+  border-radius: 4px;
+}

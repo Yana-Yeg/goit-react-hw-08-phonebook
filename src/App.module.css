@@ -1,0 +1,14 @@
+.init {
+  display: inline-block;
+  width: 460px;
+  padding: 20px;
+}
+
+.lightTheme {
+  composes: init;
+  background-color: rgb(243, 245, 239);
+}
+.darkTheme {
+  composes: init;
+  background-color: rgb(63, 63, 63);
+}
