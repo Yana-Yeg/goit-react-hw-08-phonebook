@@ -1,12 +1,17 @@
 import s from "./ContactList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { removeContact } from "../redux/contactsOperations";
-import { getFilteredContacts } from "../redux/contactsSelector";
+import { removeContact } from "../redux/contacts/contactsOperations";
+import {
+  getFilteredContacts,
+  getItems,
+} from "../redux/contacts/contactsSelector";
 import Loader from "./Loader";
 
 function ContactList() {
   const dispatch = useDispatch();
   const newContacts = useSelector(getFilteredContacts);
+  // const items = useSelector(getItems);
+  // console.log("items :>> ", items);
   const loading = useSelector((state) => state.contacts.isLoading);
 
   return (
@@ -14,7 +19,7 @@ function ContactList() {
       {loading && <Loader />}
       {newContacts.length > 0 && (
         <ul>
-          {newContacts.map((el) => (
+          {newContacts?.map((el) => (
             <li className={s.item} key={el.id}>
               {el.name + " : " + el.number}
               <button

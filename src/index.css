@@ -1,23 +1,10 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
 .wrapper {
   display: block;
   width: 400px;
   margin: 5px 20px;
   padding: 10px;
   border: 1px solid grey;
-  background-color: lightblue;
+  background-color: rgb(229, 240, 229);
   border-radius: 4px;
 }
 .titleCont {
@@ -42,4 +29,48 @@ code {
   top: 200px;
   justify-content: center;
   text-align: center;
+}
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 25px;
+  font-weight: 500;
+  color: black;
+}
+.activeLink {
+  composes: link;
+  color: rgb(65, 150, 25) !important;
+}
+
+.form {
+  display: inline-block;
+  width: 300px;
+  margin: 5px 20px;
+  padding: 10px;
+  /* border: 1px solid grey; */
+  background-color: rgb(229, 240, 229);
+  border-radius: 4px;
+  font-weight: 500;
+}
+.label {
+  margin: 10px;
+  display: block;
+}
+.input {
+  width: 100%;
+  height: 20px;
+  padding-left: 5px;
+  border-radius: 4px;
+  border: 1px solid rgb(193, 199, 193);
+}
+.formBtn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+button:hover {
+  background-color: rgb(20, 104, 13);
+  color: white;
+  border-radius: 4px;
 }

@@ -4,7 +4,7 @@ import "../index.css";
 function Loader() {
   return (
     <div className="loader">
-      <ThreeCircles color="blue" height={350} width={350} />
+      <ThreeCircles color="green" height={350} width={350} />
     </div>
   );
 }

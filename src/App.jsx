@@ -1,54 +1,33 @@
 import "./index.css";
-import style from "./App.module.css";
-import { Toaster } from "react-hot-toast";
-import { useState, useEffect } from "react";
-import ContactForm from "./components/ContactForm";
-import ContactList from "./components/ContactList";
-import Filter from "./components/Filter";
-import { getContacts } from "./redux/contactsOperations";
+import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { getCurrentUser } from "./redux/users/authOperations";
+
+import AppBar from "./components/AppBar";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import Contacts from "./pages/ContactsPage";
 import { useDispatch } from "react-redux";
 
 export default function App() {
-  const [theme, setTheme] = useState("light");
-
-  //asynk thunk
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getContacts());
+    dispatch(getCurrentUser());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   theme === "light" && document.body.classList.add("lightTheme");
-  //   theme === "dark"
-  //     ? document.body.classList.replace("lightTheme", "darkTheme")
-  //     : document.body.classList.replace("darkTheme", "lightTheme");
-  // }, [theme]);
-
-  const styleH1 = {
-    textAlign: "center",
-    color: theme === "light" ? "black" : "white",
-  };
-
   return (
-    <div className={theme === "light" ? style.lightTheme : style.darkTheme}>
-      <div className="title">
-        <h1 style={styleH1}>Phonebook</h1>
-        <select
-          name="theme"
-          value={theme}
-          onChange={(e) => setTheme(e.target.value)}
-        >
-          <option value="light">light</option>
-          <option value="dark">dark</option>
-        </select>
-      </div>
-      <Toaster />
-      <ContactForm />
-      <div className="wrapper">
-        <h2 className="titleCont">Contacts</h2>
-        <Filter />
-        <ContactList />
-      </div>
+    <div>
+      <AppBar />
+
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/contacts" component={Contacts} />
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import s from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "../redux/contactsOperations";
-import { getItems } from "../redux/contactsSelector";
+import { addContact } from "../redux/contacts/contactsOperations";
+import { getItems } from "../redux/contacts/contactsSelector";
 import toast from "react-hot-toast";
 
 function ContactForm() {
@@ -40,6 +40,7 @@ function ContactForm() {
       toast.error(name + " is already in contacts");
       reset();
     } else {
+      console.log("newObj", newObj);
       dispatch(addContact(newObj));
       toast.success(name + " adds to contacts");
       reset();

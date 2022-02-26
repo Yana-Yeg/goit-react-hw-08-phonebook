@@ -1,7 +1,8 @@
 .init {
-  display: inline-block;
-  width: 460px;
-  padding: 20px;
+  display: flex;
+  /* width: 460px; */
+  justify-content: space-between;
+  padding: 10px 30px;
 }
 
 .lightTheme {
