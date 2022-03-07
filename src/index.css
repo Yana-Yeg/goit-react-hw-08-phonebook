@@ -36,7 +36,7 @@
   padding: 12px;
   font-size: 25px;
   font-weight: 500;
-  color: black;
+  color: lightslategrey;
 }
 .activeLink {
   composes: link;
@@ -73,4 +73,18 @@ button:hover {
   background-color: rgb(20, 104, 13);
   color: white;
   border-radius: 4px;
+}
+.lightTheme {
+  /* display: flex;
+  width: 460px;
+  justify-content: space-between;
+  padding: 10px 30px; */
+  background-color: rgb(243, 245, 239);
+}
+.darkTheme {
+  /* display: flex;
+  width: 460px; 
+  justify-content: space-between;
+  padding: 10px 30px; */
+  background-color: rgb(63, 63, 63);
 }

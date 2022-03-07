@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../redux/users/authSelectors";
 
 export default function App() {
-  const [theme, setTheme] = useState("light");
+  // const [theme, setTheme] = useState("light");
   //asynk thunk
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);

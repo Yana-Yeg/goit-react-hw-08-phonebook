@@ -18,7 +18,7 @@ import storage from "redux-persist/lib/storage"; //persist
 const authPersistConfig = {
   key: "auth", //если в LS надо хранить не все а только что-то
   storage,
-  whitelist: ["token"], //если в LS надо хранить не все а только что-то
+  whitelist: ["token", "theme"], //если в LS надо хранить не все а только что-то
 };
 
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
@@ -40,6 +40,7 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+console.log("store", store.getState());
 
 // const store = configureStore(
 //   {
