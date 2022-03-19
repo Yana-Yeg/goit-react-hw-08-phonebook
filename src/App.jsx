@@ -34,6 +34,7 @@ export default function App() {
           style={{
             backgroundColor: theme === "light" ? "rgb(243, 245, 239" : "black",
             color: theme === "light" ? "black" : "rgb(43, 145, 139",
+            height: "100vh",
           }}
         >
           <AppBar />

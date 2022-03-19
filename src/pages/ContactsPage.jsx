@@ -24,7 +24,7 @@ export default function App() {
   //   };
 
   return (
-    <div>
+    <div className="contacts-wrap">
       <div className="title">
         <h1
         //   style={styleH1}

@@ -6,12 +6,12 @@ export default function HomePage() {
   const name = useSelector(getUserName);
   console.log("name :>> ", name);
   return (
-    <>
+    <div style={{ textAlign: "center" }}>
       {isLoggedIn ? (
-        <h1>Hello, {name} =)</h1>
+        <h1>Hello, {name} &#128075;</h1>
       ) : (
-        <h1>Login or get registration</h1>
+        <h1>Login or Registration</h1>
       )}
-    </>
+    </div>
   );
 }

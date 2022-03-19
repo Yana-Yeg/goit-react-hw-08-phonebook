@@ -1,6 +1,6 @@
 .init {
   display: flex;
-  /* width: 460px; */
+  width: 100%;
   justify-content: space-between;
   padding: 10px 30px;
 }
@@ -15,4 +15,8 @@
 }
 .select {
   margin-left: 20px;
+  height: 22px;
+  background-color: inherit;
+  border-radius: 3px;
+  border: 1px solid inherit;
 }

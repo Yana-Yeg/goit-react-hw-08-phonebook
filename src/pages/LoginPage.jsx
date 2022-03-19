@@ -51,7 +51,8 @@ export default function LoginPage() {
       <label htmlFor="" className="label">
         <input
           className="input"
-          type="text"
+          type="password"
+          // type="text"
           placeholder="Password"
           name="password"
           value={password}

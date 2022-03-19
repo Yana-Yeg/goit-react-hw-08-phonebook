@@ -27,8 +27,8 @@ export function UserMenu() {
         className={style.select}
         onChange={(e) => dispatch(changeTheme(e.target.value))}
       >
-        <option value="light">light</option>
-        <option value="dark">dark</option>
+        <option value="light">light &#127774;</option>
+        <option value="dark">dark &#127762;</option>
       </select>
     </div>
   );
