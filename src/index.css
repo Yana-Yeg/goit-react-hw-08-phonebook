@@ -1,4 +1,6 @@
-ul {
+ul,
+form {
+  margin: 0;
   padding: 0;
 }
 .contacts-wrap {
