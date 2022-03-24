@@ -29,10 +29,10 @@ export function UserMenu() {
         onChange={(e) => dispatch(changeTheme(e.target.value))}
       >
         <option value="light">
-          light <span>&#127774;</span>
+          <span>light &#127774;</span>
         </option>
         <option value="dark">
-          dark <span>&#127762;</span>
+          <span>dark &#127762;</span>
         </option>
       </select>
     </div>
