@@ -42,7 +42,7 @@ form {
   color: lightslategrey;
 }
 .activeLink {
-  composes: link;
+  /* composes: link; */
   color: rgb(65, 150, 25) !important;
 }
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import defaultAva from "../img/avatar.png";
 import { logOut } from "../redux/users/authOperations";

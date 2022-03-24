@@ -1,3 +1,4 @@
+import React from "react";
 import { ThreeCircles } from "react-loader-spinner";
 import "../index.css";
 

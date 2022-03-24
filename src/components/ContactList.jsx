@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./ContactList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { removeContact } from "../redux/contacts/contactsOperations";
@@ -19,7 +20,7 @@ function ContactList() {
       {loading && <Loader />}
       {newContacts.length > 0 && (
         <ul>
-          {newContacts?.map((el) => (
+          {newContacts.map((el) => (
             <li className={s.item} key={el.id}>
               {el.name + " : " + el.number}
               <button
