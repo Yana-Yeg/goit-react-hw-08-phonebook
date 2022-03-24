@@ -29,10 +29,14 @@ export function UserMenu() {
         onChange={(e) => dispatch(changeTheme(e.target.value))}
       >
         <option value="light">
-          <span>light &#127774;</span>
+          <span role="img" aria-label="light_theme">
+            light &#127774;
+          </span>
         </option>
         <option value="dark">
-          <span>dark &#127762;</span>
+          <span role="img" aria-label="dark_theme">
+            dark &#127762;
+          </span>
         </option>
       </select>
     </div>
