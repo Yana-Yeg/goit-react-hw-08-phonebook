@@ -1,7 +1,7 @@
 import "./index.css";
 import React from "react";
-import { lazy, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { useEffect } from "react";
+import { Redirect, Switch } from "react-router-dom";
 import { getCurrentUser } from "./redux/users/authOperations";
 import AppBar from "./components/AppBar";
 import HomePage from "./pages/HomePage";

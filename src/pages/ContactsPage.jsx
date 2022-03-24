@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { getContacts } from "../redux/contacts/contactsOperations";
 import ContactForm from "../components/ContactForm";
