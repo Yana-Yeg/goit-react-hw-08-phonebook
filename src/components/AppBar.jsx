@@ -19,15 +19,17 @@ export function AppBar() {
   const theme = useSelector(getTheme);
 
   return (
-    <header
-      style={{ display: "flex", justifyContent: "space-between" }}
-      // className={theme === "light" ? style.lightTheme : style.darkTheme}
-    >
+    <header style={{ display: "flex", justifyContent: "space-between" }}>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
       <div>
         <select
           className={style.select}
+          style={
+            theme === "light"
+              ? { color: "black" }
+              : { color: "rgb(43, 145, 139)" }
+          }
           onChange={(e) => dispatch(changeLang(e.target.value))}
           name="lang"
           value={lang}
@@ -39,6 +41,11 @@ export function AppBar() {
           name="theme"
           value={theme}
           className={style.select}
+          style={
+            theme === "light"
+              ? { color: "black" }
+              : { color: "rgb(43, 145, 139)" }
+          }
           onChange={(e) => dispatch(changeTheme(e.target.value))}
         >
           <option value="light">light &#127774;</option>

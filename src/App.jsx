@@ -22,7 +22,6 @@ import { getTheme } from "./redux/theme/themeSelector";
 export default function App() {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
-  console.log("theme :>> ", theme);
   const isRefreshingCurrentUser = useSelector(getIsRefreshingCurrentUser);
 
   useEffect(() => {

@@ -30,26 +30,6 @@ export function UserMenu() {
       <button type="button" onClick={(e) => dispatch(logOut())}>
         {buttonOpts[lang]}
       </button>
-
-      {/* <select
-        name="theme"
-        value={theme}
-        className={style.select}
-        onChange={(e) => dispatch(changeTheme(e.target.value))}
-      >
-        <option value="light">
-          light
-          <span role="img" aria-label="theme">
-            &#127774;
-          </span>
-        </option>
-        <option value="dark">
-          dark
-          <span role="img" aria-label="theme">
-            &#127762;
-          </span>
-        </option>
-      </select> */}
     </div>
   );
 }

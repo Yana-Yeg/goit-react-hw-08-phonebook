@@ -12,8 +12,6 @@ import { langOptions } from "../assets/langOptions";
 import { getLang } from "../redux/lang/langSelector";
 
 export default function App() {
-  // const [theme, setTheme] = useState("light");
-  //asynk thunk
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
 
@@ -23,29 +21,12 @@ export default function App() {
     dispatch(getContacts());
   }, [dispatch, isLoggedIn]);
 
-  //   const styleH1 = {
-  //     textAlign: "center",
-  //     color: theme === "light" ? "black" : "white",
-  //   };
-
   const { titlePhone, titleCont } = langOptions.contactsPageOptions;
 
   return (
     <div className="contacts-wrap">
       <div className="title">
-        <h1
-        //   style={styleH1}
-        >
-          {titlePhone[lang]}
-        </h1>
-        {/* <select
-          name="theme"
-          value={theme}
-          onChange={(e) => setTheme(e.target.value)}
-        >
-          <option value="light">light</option>
-          <option value="dark">dark</option>
-        </select> */}
+        <h1>{titlePhone[lang]}</h1>
       </div>
       <Toaster />
       <ContactForm />
