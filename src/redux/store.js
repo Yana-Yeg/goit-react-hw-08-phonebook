@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // import { composeWithDevTools } from "redux-devtools-extension";
 import contactsReducer from "./contacts/contactsSlice";
 import authReducer from "./users/authSlice";
+import langReducer from "../redux/lang/langSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import {
   persistStore,
@@ -27,6 +28,7 @@ const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     auth: authPersistedReducer,
+    lang: langReducer,
   },
   middleware: (
     getDefaultMiddleware //перечень для игнорлиста

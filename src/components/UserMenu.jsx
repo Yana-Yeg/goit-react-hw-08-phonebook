@@ -5,6 +5,8 @@ import { logOut } from "../redux/users/authOperations";
 import { getUserName } from "../redux/users/authSelectors";
 import { changeTheme } from "../redux/users/authSlice";
 import style from "./UserMenu.module.css";
+import { langOptions } from "../assets/langOptions";
+import { getLang } from "../redux/lang/langSelector";
 
 export function UserMenu() {
   const avatar = defaultAva;
@@ -12,17 +14,24 @@ export function UserMenu() {
   const userName = useSelector(getUserName);
   const theme = useSelector((state) => state.auth.theme);
 
+  const lang = useSelector(getLang);
+
+  const { title: titleOpts, button: buttonOpts } = langOptions.userMenuOptions;
+
   return (
     <div
       style={{ display: "flex", alignItems: "center" }}
       // className={theme === "light" ? style.lightTheme : style.darkTheme}
     >
       <img src={avatar} alt="" width="32" />
-      <p style={{ margin: "0 10px", fontWeight: 700 }}>Welcome, {userName}</p>
+      <p style={{ margin: "0 10px", fontWeight: 700 }}>
+        {titleOpts[lang]}, {userName}
+      </p>
       <button type="button" onClick={(e) => dispatch(logOut())}>
-        LogOut
+        {buttonOpts[lang]}
       </button>
-      <select
+
+      {/* <select
         name="theme"
         value={theme}
         className={style.select}
@@ -30,17 +39,17 @@ export function UserMenu() {
       >
         <option value="light">
           light
-          {/* <span role="img" aria-label="theme">
+          <span role="img" aria-label="theme">
             &#127774;
-          </span> */}
+          </span>
         </option>
         <option value="dark">
           dark
-          {/* <span role="img" aria-label="theme">
+          <span role="img" aria-label="theme">
             &#127762;
-          </span> */}
+          </span>
         </option>
-      </select>
+      </select> */}
     </div>
   );
 }

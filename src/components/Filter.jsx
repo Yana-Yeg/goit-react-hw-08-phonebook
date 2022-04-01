@@ -3,15 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeFilter } from "../redux/contacts/contactsSlice";
 import { getFilter } from "../redux/contacts/contactsSelector";
 import s from "./Filter.module.css";
+import { langOptions } from "../assets/langOptions";
+import { getLang } from "../redux/lang/langSelector";
 
 function Filter() {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
+  const lang = useSelector(getLang);
+  const { title: titleOpts } = langOptions.filterOptions;
+
   return (
     <div>
       <label className={s.label} htmlFor="">
-        Find contacts by name
+        {titleOpts[lang]}
         <input
           className={s.input}
           type="text"

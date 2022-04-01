@@ -1,5 +1,5 @@
 import "./index.css";
-import React from "react";
+import React, { Suspense } from "react";
 import { useEffect } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import { getCurrentUser } from "./redux/users/authOperations";
@@ -40,21 +40,23 @@ export default function App() {
         >
           <AppBar />
 
-          <Switch>
-            <PublicRoute exact path="/">
-              <HomePage />
-            </PublicRoute>
-            <PublicRoute path="/register" restricted>
-              <RegisterPage />
-            </PublicRoute>
-            <PublicRoute path="/login" redirectTo="/contacts" restricted>
-              <LoginPage />
-            </PublicRoute>
-            <PrivateRoute path="/contacts" redirectTo="/login">
-              <Contacts />
-            </PrivateRoute>
-            <Redirect to="/" />
-          </Switch>
+          <Suspense fallback={<h1>Wait a second, please =)</h1>}>
+            <Switch>
+              <PublicRoute exact path="/">
+                <HomePage />
+              </PublicRoute>
+              <PublicRoute path="/register" restricted>
+                <RegisterPage />
+              </PublicRoute>
+              <PublicRoute path="/login" redirectTo="/contacts" restricted>
+                <LoginPage />
+              </PublicRoute>
+              <PrivateRoute path="/contacts" redirectTo="/login">
+                <Contacts />
+              </PrivateRoute>
+              <Redirect to="/" />
+            </Switch>
+          </Suspense>
         </div>
       )}
     </>

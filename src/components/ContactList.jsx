@@ -4,11 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeContact } from "../redux/contacts/contactsOperations";
 import { getFilteredContacts } from "../redux/contacts/contactsSelector";
 import Loader from "./Loader";
+import { langOptions } from "../assets/langOptions";
+import { getLang } from "../redux/lang/langSelector";
 
 function ContactList() {
   const dispatch = useDispatch();
   const newContacts = useSelector(getFilteredContacts);
   const loading = useSelector((state) => state.contacts.isLoading);
+
+  const lang = useSelector(getLang);
+  const { button: buttonOpts } = langOptions.contactListOptions;
 
   return (
     <>
@@ -23,7 +28,7 @@ function ContactList() {
                 onClick={() => dispatch(removeContact(el.id))}
                 disabled={loading}
               >
-                Delete
+                {buttonOpts[lang]}
               </button>
             </li>
           ))}

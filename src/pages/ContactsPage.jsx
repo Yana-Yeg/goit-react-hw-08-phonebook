@@ -8,12 +8,16 @@ import ContactList from "../components/ContactList";
 import Filter from "../components/Filter";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../redux/users/authSelectors";
+import { langOptions } from "../assets/langOptions";
+import { getLang } from "../redux/lang/langSelector";
 
 export default function App() {
   // const [theme, setTheme] = useState("light");
   //asynk thunk
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
+
+  const lang = useSelector(getLang);
 
   useEffect(() => {
     dispatch(getContacts());
@@ -24,13 +28,15 @@ export default function App() {
   //     color: theme === "light" ? "black" : "white",
   //   };
 
+  const { titlePhone, titleCont } = langOptions.contactsPageOptions;
+
   return (
     <div className="contacts-wrap">
       <div className="title">
         <h1
         //   style={styleH1}
         >
-          Phonebook
+          {titlePhone[lang]}
         </h1>
         {/* <select
           name="theme"
@@ -44,7 +50,7 @@ export default function App() {
       <Toaster />
       <ContactForm />
       <div className="wrapper">
-        <h2 className="titleCont">Contacts</h2>
+        <h2 className="titleCont"> {titleCont[lang]}</h2>
         <Filter />
         <ContactList />
       </div>
