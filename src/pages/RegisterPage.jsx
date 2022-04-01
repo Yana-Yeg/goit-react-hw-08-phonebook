@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/users/authOperations";
+import { langOptionsRegister } from "../assets/langOptionsRegister";
+import { getLang } from "../redux/lang/langSelector";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -8,6 +10,15 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+
+  const lang = useSelector(getLang);
+  const {
+    title,
+    inputEmail,
+    inputPass,
+    inputPassConf,
+    buttonReg,
+  } = langOptionsRegister;
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -45,7 +56,7 @@ export default function RegisterPage() {
         <input
           className="input"
           type="text"
-          placeholder="First name"
+          placeholder={title[lang]}
           name="name"
           value={name}
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -58,7 +69,7 @@ export default function RegisterPage() {
         <input
           className="input"
           type="text"
-          placeholder="Email"
+          placeholder={inputEmail[lang]}
           name="email"
           value={email}
           // pattern="/^\S+@\S+$/i"
@@ -71,7 +82,20 @@ export default function RegisterPage() {
         <input
           className="input"
           type="text"
-          placeholder="Password"
+          placeholder={inputPass[lang]}
+          name="password"
+          value={password}
+          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          // title="Name may contain only letters"
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <label htmlFor="" className="label">
+        <input
+          className="input"
+          type="text"
+          placeholder={inputPassConf[lang]}
           name="password"
           value={password}
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -82,7 +106,7 @@ export default function RegisterPage() {
       </label>
 
       <button className="formBtn" type="submit">
-        Register
+        {buttonReg[lang]}
       </button>
     </form>
   );
