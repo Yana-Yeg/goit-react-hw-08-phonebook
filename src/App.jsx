@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import { getIsRefreshingCurrentUser } from "./redux/users/authSelectors";
+import { getTheme } from "./redux/theme/themeSelector";
 
 // const HomePage = lazy(() => import("./pages/HomePage"));
 // const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -20,7 +21,7 @@ import { getIsRefreshingCurrentUser } from "./redux/users/authSelectors";
 
 export default function App() {
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.auth.theme);
+  const theme = useSelector(getTheme);
   console.log("theme :>> ", theme);
   const isRefreshingCurrentUser = useSelector(getIsRefreshingCurrentUser);
 
@@ -34,7 +35,7 @@ export default function App() {
         <div
           style={{
             backgroundColor: theme === "light" ? "rgb(243, 245, 239" : "black",
-            color: theme === "light" ? "black" : "rgb(43, 145, 139",
+            color: theme === "light" ? "black" : "rgb(43, 145, 139)",
             height: "100vh",
           }}
         >

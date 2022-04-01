@@ -6,14 +6,17 @@ import { getIsLoggedIn } from "../redux/users/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../redux/lang/langSlice";
 import { getLang } from "../redux/lang/langSelector";
-import { changeTheme } from "../redux/users/authSlice";
+// import { changeTheme } from "../redux/users/authSlice";
+import { changeTheme } from "../redux/theme/themeSlice";
+import { getTheme } from "../redux/theme/themeSelector";
 import style from "./AppBar.module.css";
 
 export function AppBar() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
-  const theme = useSelector((state) => state.auth.theme);
+  // const theme = useSelector((state) => state.auth.theme);
+  const theme = useSelector(getTheme);
 
   return (
     <header
@@ -21,8 +24,10 @@ export function AppBar() {
       // className={theme === "light" ? style.lightTheme : style.darkTheme}
     >
       <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
       <div>
         <select
+          className={style.select}
           onChange={(e) => dispatch(changeLang(e.target.value))}
           name="lang"
           value={lang}
@@ -40,7 +45,6 @@ export function AppBar() {
           <option value="dark">dark &#127762;</option>
         </select>
       </div>
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </header>
   );
 }

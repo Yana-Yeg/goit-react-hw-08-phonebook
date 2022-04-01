@@ -13,7 +13,7 @@ export const langOptionsRegister = {
   },
   inputPassConf: {
     ua: "Повторіть пароль",
-    en: "Repit Password",
+    en: "Comfirm Password",
   },
   buttonReg: {
     ua: "Зареєструватися",

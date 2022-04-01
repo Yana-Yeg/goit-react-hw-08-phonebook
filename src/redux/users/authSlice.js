@@ -8,13 +8,13 @@ const authSlice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshingCurrentUser: false,
-    theme: "light",
+    // theme: "light",
   },
-  reducers: {
-    changeTheme(state, { payload }) {
-      return { ...state, theme: payload };
-    },
-  },
+  // reducers: {
+  //   changeTheme(state, { payload }) {
+  //     return { ...state, theme: payload };
+  //   },
+  // },
   extraReducers: {
     [register.fulfilled](state, { payload }) {
       state.user = payload.user;
@@ -46,4 +46,4 @@ const authSlice = createSlice({
   },
 });
 export default authSlice.reducer;
-export const { changeTheme } = authSlice.actions;
+// export const { changeTheme } = authSlice.actions;
