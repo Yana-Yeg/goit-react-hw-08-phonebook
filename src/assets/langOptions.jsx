@@ -65,4 +65,14 @@ export const langOptions = {
       en: "LogIn",
     },
   },
+  homePage: {
+    title: {
+      ua: "Привіт",
+      en: "Hello",
+    },
+    greetings: {
+      ua: "Увійдіть чи Зареєструйтесь",
+      en: "Login or Registration",
+    },
+  },
 };

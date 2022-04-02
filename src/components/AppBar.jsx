@@ -6,7 +6,6 @@ import { getIsLoggedIn } from "../redux/users/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../redux/lang/langSlice";
 import { getLang } from "../redux/lang/langSelector";
-// import { changeTheme } from "../redux/users/authSlice";
 import { changeTheme } from "../redux/theme/themeSlice";
 import { getTheme } from "../redux/theme/themeSelector";
 import style from "./AppBar.module.css";
@@ -15,7 +14,6 @@ export function AppBar() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
-  // const theme = useSelector((state) => state.auth.theme);
   const theme = useSelector(getTheme);
 
   return (

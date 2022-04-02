@@ -19,11 +19,9 @@ export default function App() {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
   const isRefreshingCurrentUser = useSelector(getIsRefreshingCurrentUser);
-  const token = useSelector((state) => state.auth.token);
-  // console.log("token :>> ", token);
 
   useEffect(() => {
-    dispatch(getCurrentUser(token));
+    dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (

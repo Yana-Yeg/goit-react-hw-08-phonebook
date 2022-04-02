@@ -43,18 +43,19 @@ export const removeContact = createAsyncThunk(
   }
 );
 
-export const editContact = createAsyncThunk(
-  "contacts/editContact",
-  async (editingContact, thunkApi) => {
-    try {
-      const { id, form } = await fetchUpdateContactsApi(editingContact);
-      return { id, form };
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+// export const editContact = createAsyncThunk(
+//   "contacts/editContact",
+//   async (editingContact, thunkApi) => {
+//     try {
+//       const { id, form } = await fetchUpdateContactsApi(editingContact);
+//       return { id, form };
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
+//------------------------------------------------------------------------
 // import { createAsyncThunk } from "@reduxjs/toolkit";
 // import axios from "axios";
 

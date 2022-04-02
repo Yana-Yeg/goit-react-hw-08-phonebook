@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
@@ -31,12 +30,12 @@ export async function fetchRemoveContact(id) {
   return delId;
 }
 
-export async function fetchUpdateContactsApi(editingContact) {
-  const data = await axios.patch(`/contacts/${id}`, form);
-  const { id, form } = data;
-  console.log("fetchUpdateContactsApi :>> ", { id, form });
-  return { id, form };
-}
+// export async function fetchUpdateContactsApi(editingContact) {
+//   const data = await axios.patch(`/contacts/${id}`, form);
+//   const { id, form } = data;
+//   // console.log("fetchUpdateContactsApi :>> ", { id, form });
+//   return { id, form };
+// }
 //--------------------------------------------------------------/
 
 export async function fetchRegister(userData) {
