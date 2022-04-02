@@ -11,10 +11,7 @@ import Contacts from "./pages/ContactsPage";
 import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
-import {
-  getIsLoggedIn,
-  getIsRefreshingCurrentUser,
-} from "./redux/users/authSelectors";
+import { getIsRefreshingCurrentUser } from "./redux/users/authSelectors";
 import { getTheme } from "./redux/theme/themeSelector";
 
 // const HomePage = lazy(() => import("./pages/HomePage"));
@@ -26,10 +23,11 @@ export default function App() {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
   const isRefreshingCurrentUser = useSelector(getIsRefreshingCurrentUser);
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const token = useSelector((state) => state.auth.token);
+  // console.log("token :>> ", token);
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    dispatch(getCurrentUser(token));
   }, [dispatch]);
 
   return (

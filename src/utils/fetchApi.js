@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
@@ -59,9 +60,32 @@ export async function fetchLogout() {
   return data;
 }
 
-export async function ferchCurrentUser() {
-  const { data } = await axios.get("/users/current");
-  token.set(data.token);
+export async function fetchCurrentUser() {
+  const state = useSelector((state) => state);
+  // console.log("state", state);
+  const persistedToken = state.auth.token;
+  // console.log("persistedToken", persistedToken);
+  token.set(persistedToken);
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
+  const { data } = await axios.get("/users/current", persistedToken);
+  // token.set(data.token);
   // console.log("ferchCurrentUser_data :>> ", data);
   return data;
 }
+
+// export async function fetchCurrentUser(token) {
+//   // const state = useSelector((state) => state);
+//   // // console.log("state", state);
+//   // const persistedToken = state.auth.token;
+//   // // console.log("persistedToken", persistedToken);
+//   // if (!persistedToken) {
+//   //   return;
+//   // }
+//   token.set(token);
+//   const { data } = await axios.get("/users/current", token);
+//   // token.set(data.token);
+//   // console.log("ferchCurrentUser_data :>> ", data);
+//   return data;

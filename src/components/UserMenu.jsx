@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import defaultAva from "../img/avatar.png";
 import { logout } from "../redux/users/authOperations";
 import { getUserName } from "../redux/users/authSelectors";
-import { changeTheme } from "../redux/users/authSlice";
-import style from "./UserMenu.module.css";
 import { langOptions } from "../assets/langOptions";
 import { getLang } from "../redux/lang/langSelector";
 
@@ -12,17 +10,13 @@ export function UserMenu() {
   const avatar = defaultAva;
   const dispatch = useDispatch();
   const userName = useSelector(getUserName);
-  const theme = useSelector((state) => state.auth.theme);
 
   const lang = useSelector(getLang);
 
   const { title: titleOpts, button: buttonOpts } = langOptions.userMenuOptions;
 
   return (
-    <div
-      style={{ display: "flex", alignItems: "center" }}
-      // className={theme === "light" ? style.lightTheme : style.darkTheme}
-    >
+    <div style={{ display: "flex", alignItems: "center" }}>
       <img src={avatar} alt="" width="32" />
       <p style={{ margin: "0 10px", fontWeight: 700 }}>
         {titleOpts[lang]}, {userName}
