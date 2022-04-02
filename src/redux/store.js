@@ -1,7 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-// import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactsReducer from "./contacts/contactsSlice";
 import authReducer from "./users/authSlice";
+import langReducer from "../redux/lang/langSlice";
+import themeReducer from "../redux/theme/themeSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import {
   persistStore,
@@ -18,16 +19,27 @@ import storage from "redux-persist/lib/storage"; //persist
 const authPersistConfig = {
   key: "auth", //если в LS надо хранить не все а только что-то
   storage,
-  whitelist: ["token", "theme"], //если в LS надо хранить не все а только что-то
+  whitelist: ["token"], //если в LS надо хранить не все а только что-то
 };
-
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 
+const rootPersistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["lang", "theme"],
+};
+
+const rootReducer = combineReducers({
+  contacts: contactsReducer,
+  auth: authPersistedReducer,
+  lang: langReducer,
+  theme: themeReducer,
+});
+
+const rootPersistedReducer = persistReducer(rootPersistConfig, rootReducer);
+
 const store = configureStore({
-  reducer: {
-    contacts: contactsReducer,
-    auth: authPersistedReducer,
-  },
+  reducer: rootPersistedReducer,
   middleware: (
     getDefaultMiddleware //перечень для игнорлиста
   ) =>
@@ -40,16 +52,8 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-console.log("store", store.getState());
+// console.log("store", store.getState());
 
-// const store = configureStore(
-//   {
-//     reducer: {
-//       contacts: contactsReducer,
-//     },
-//   },
-//   composeWithDevTools()
-// );
 setupListeners(store.dispatch);
 
 export default store;

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { logIn } from "../redux/users/authOperations";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/users/authOperations";
+import { langOptionsLogin } from "../assets/langOptionsLogin";
+import { getLang } from "../redux/lang/langSelector";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const lang = useSelector(getLang);
+  const { inputEmail, inputPass, buttonLogin } = langOptionsLogin;
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -28,7 +32,7 @@ export default function LoginPage() {
       email,
       password,
     };
-    dispatch(logIn(user));
+    dispatch(login(user));
     setEmail("");
     setPassword("");
   };
@@ -39,7 +43,7 @@ export default function LoginPage() {
         <input
           className="input"
           type="text"
-          placeholder="Email"
+          placeholder={inputEmail[lang]}
           name="email"
           value={email}
           // pattern="/^\S+@\S+$/i"
@@ -53,7 +57,7 @@ export default function LoginPage() {
           className="input"
           type="password"
           // type="text"
-          placeholder="Password"
+          placeholder={inputPass[lang]}
           name="password"
           value={password}
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -64,7 +68,7 @@ export default function LoginPage() {
       </label>
 
       <button className="formBtn" type="submit">
-        LogIn
+        {buttonLogin[lang]}
       </button>
     </form>
   );

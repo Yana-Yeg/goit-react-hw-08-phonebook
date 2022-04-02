@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../redux/contacts/contactsOperations";
 import { getItems } from "../redux/contacts/contactsSelector";
 import toast from "react-hot-toast";
+import { langOptions } from "../assets/langOptions";
+import { getLang } from "../redux/lang/langSelector";
 
 function ContactForm() {
   const [name, setName] = useState("");
@@ -12,6 +14,8 @@ function ContactForm() {
 
   const dispatch = useDispatch();
   const items = useSelector(getItems);
+
+  const lang = useSelector(getLang);
 
   const nameInputId = useRef(nanoid());
   const numberInputId = useRef(nanoid());
@@ -50,11 +54,14 @@ function ContactForm() {
     setName("");
     setNumber("");
   };
+
+  const { title, phone, button } = langOptions.contactsFormOptions;
+
   return (
     <>
       <form className={s.form} onSubmit={handleSubmit}>
         <label className={s.label} htmlFor={nameInputId.current}>
-          Name
+          {title[lang]}
           <input
             className={s.input}
             type="text"
@@ -68,7 +75,7 @@ function ContactForm() {
           />
         </label>
         <label className={s.label} htmlFor={numberInputId.current}>
-          Phone
+          {phone[lang]}
           <input
             className={s.input}
             type="tel"
@@ -81,7 +88,7 @@ function ContactForm() {
           />
         </label>
         <button className={s.formBtn} type="submit" disabled={!number && !name}>
-          Add contact
+          {button[lang]}
         </button>
       </form>
     </>

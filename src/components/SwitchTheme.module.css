@@ -1,4 +1,4 @@
-/* .init {
+.init {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -14,9 +14,10 @@
   background-color: rgb(63, 63, 63);
 }
 .select {
-  margin-left: 20px;
+  display: block;
+  margin: 5px;
   height: 22px;
   background-color: inherit;
   border-radius: 3px;
   border: 1px solid inherit;
-} */
+}
