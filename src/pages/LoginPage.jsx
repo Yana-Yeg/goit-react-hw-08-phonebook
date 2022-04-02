@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "../redux/users/authOperations";
+import { login } from "../redux/users/authOperations";
 import { langOptionsLogin } from "../assets/langOptionsLogin";
 import { getLang } from "../redux/lang/langSelector";
 
@@ -32,7 +32,7 @@ export default function LoginPage() {
       email,
       password,
     };
-    dispatch(logIn(user));
+    dispatch(login(user));
     setEmail("");
     setPassword("");
   };

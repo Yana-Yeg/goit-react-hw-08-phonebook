@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import defaultAva from "../img/avatar.png";
-import { logOut } from "../redux/users/authOperations";
+import { logout } from "../redux/users/authOperations";
 import { getUserName } from "../redux/users/authSelectors";
 import { changeTheme } from "../redux/users/authSlice";
 import style from "./UserMenu.module.css";
@@ -27,7 +27,7 @@ export function UserMenu() {
       <p style={{ margin: "0 10px", fontWeight: 700 }}>
         {titleOpts[lang]}, {userName}
       </p>
-      <button type="button" onClick={(e) => dispatch(logOut())}>
+      <button type="button" onClick={(e) => dispatch(logout())}>
         {buttonOpts[lang]}
       </button>
     </div>
