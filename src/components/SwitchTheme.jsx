@@ -23,8 +23,14 @@ const SwitchTheme = () => {
       }
       onChange={(e) => dispatch(changeTheme(e.target.value))}
     >
-      <option value="light">{light[lang]} &#127774;</option>
-      <option value="dark">{dark[lang]} &#127762;</option>
+      <option value="light">
+        {light[lang]}
+        {/* &#127774; */}
+      </option>
+      <option value="dark">
+        {dark[lang]}
+        {/* &#127762; */}
+      </option>
     </select>
   );
 };
