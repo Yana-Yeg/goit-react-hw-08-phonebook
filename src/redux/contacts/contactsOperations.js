@@ -3,7 +3,7 @@ import {
   fetchContacts,
   fetchAddContact,
   fetchRemoveContact,
-  fetchUpdateContactsApi,
+  // fetchUpdateContactsApi,
 } from "../../utils/fetchApi";
 
 //AsyncThunk

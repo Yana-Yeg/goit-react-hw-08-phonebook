@@ -13,16 +13,16 @@ export function UserMenu() {
 
   const lang = useSelector(getLang);
 
-  const { title: titleOpts, button: buttonOpts } = langOptions.userMenuOptions;
+  const { title, button } = langOptions.userMenuOptions;
 
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <img src={avatar} alt="" width="32" />
       <p style={{ margin: "0 10px", fontWeight: 700 }}>
-        {titleOpts[lang]}, {userName}
+        {title[lang]}, {userName}
       </p>
       <button type="button" onClick={(e) => dispatch(logout())}>
-        {buttonOpts[lang]}
+        {button[lang]}
       </button>
     </div>
   );
