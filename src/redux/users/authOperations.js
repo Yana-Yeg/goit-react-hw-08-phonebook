@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import {
   fetchLogin,
   fetchRegister,
@@ -40,32 +39,6 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
   }
 });
 
-// export const getCurrentUser = createAsyncThunk(
-//   "auth/current",
-//   async (_, thunkApi) => {
-//     // const state = thunkApi.getState();
-//     // const persistedToken = state.auth.token;
-//     // if (!persistedToken) {
-//     //   return thunkApi.rejectWithValue();
-//     // }
-//     try {
-//       // token.set(token);
-//       const data = await fetchCurrentUser();
-//       console.log("data", data);
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-};
 export const getCurrentUser = createAsyncThunk(
   "auth/current",
   async (_, thunkApi) => {
@@ -74,10 +47,9 @@ export const getCurrentUser = createAsyncThunk(
     if (!persistedToken) {
       return thunkApi.rejectWithValue();
     }
-    token.set(persistedToken);
     try {
-      const { data } = await axios.get("/users/current");
-      console.log("data", data);
+      const data = await fetchCurrentUser(persistedToken);
+      // console.log("data", data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -85,6 +57,7 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
+//------------или это без fetch
 // import axios from "axios";
 // import { createAsyncThunk } from "@reduxjs/toolkit";
 

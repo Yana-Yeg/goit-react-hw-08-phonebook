@@ -1,23 +1,19 @@
 import "./index.css";
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { useEffect } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import { getCurrentUser } from "./redux/users/authOperations";
 import AppBar from "./components/AppBar";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import Contacts from "./pages/ContactsPage";
 import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import { getIsRefreshingCurrentUser } from "./redux/users/authSelectors";
 import { getTheme } from "./redux/theme/themeSelector";
 
-// const HomePage = lazy(() => import("./pages/HomePage"));
-// const LoginPage = lazy(() => import("./pages/LoginPage"));
-// const RegisterPage = lazy(() => import("./pages/RegisterPage"));
-// const Contacts = lazy(() => import("./pages/ContactsPage"));
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
+const Contacts = lazy(() => import("./pages/ContactsPage.jsx"));
 
 export default function App() {
   const dispatch = useDispatch();

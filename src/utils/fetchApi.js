@@ -60,32 +60,9 @@ export async function fetchLogout() {
   return data;
 }
 
-export async function fetchCurrentUser() {
-  const state = useSelector((state) => state);
-  // console.log("state", state);
-  const persistedToken = state.auth.token;
-  // console.log("persistedToken", persistedToken);
-  token.set(persistedToken);
-  if (!persistedToken) {
-    return;
-  }
+export async function fetchCurrentUser(persistedToken) {
   token.set(persistedToken);
   const { data } = await axios.get("/users/current", persistedToken);
-  // token.set(data.token);
   // console.log("ferchCurrentUser_data :>> ", data);
   return data;
 }
-
-// export async function fetchCurrentUser(token) {
-//   // const state = useSelector((state) => state);
-//   // // console.log("state", state);
-//   // const persistedToken = state.auth.token;
-//   // // console.log("persistedToken", persistedToken);
-//   // if (!persistedToken) {
-//   //   return;
-//   // }
-//   token.set(token);
-//   const { data } = await axios.get("/users/current", token);
-//   // token.set(data.token);
-//   // console.log("ferchCurrentUser_data :>> ", data);
-//   return data;
